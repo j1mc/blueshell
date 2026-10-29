@@ -1211,6 +1211,9 @@ jobs:
 
   trigger-snap:
     if: github.event_name != 'pull_request'
+    permissions:
+      actions: write # Dispatch the downstream workflow.
+      contents: read # Checkout the repository.
     runs-on: namespace-profile-ghostty-xsm
     needs: [build-dist, build-snap]
     steps:
@@ -1229,6 +1232,9 @@ jobs:
 
   trigger-flatpak:
     if: github.event_name != 'pull_request'
+    permissions:
+      actions: write # Dispatch the downstream workflow.
+      contents: read # Checkout the repository.
     runs-on: namespace-profile-ghostty-xsm
     needs: [build-dist, build-flatpak]
     steps:
